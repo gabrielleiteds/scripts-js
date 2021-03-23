@@ -1,11 +1,7 @@
-class Charger {
-  constructor(power) {
-    this.power = power
-  }
-
-  async sendEnergy() {
-    return this.power
-  }
+function sendEnergy(power) {
+  return power
 }
 
-module.exports = Charger
+module.exports = {
+  sendEnergy
+}

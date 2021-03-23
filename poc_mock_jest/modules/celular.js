@@ -1,11 +1,7 @@
-const Charger = require('./carregador')
+const carregador = require('./carregador')
 
-const charger = new Charger(5)
-
-class Phone {
-  async charge() {
-    return charger.sendEnergy()
+module.exports = {
+  charge(power) {
+    return carregador.sendEnergy(power)
   }
 }
-
-module.exports = Phone

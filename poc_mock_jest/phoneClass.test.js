@@ -1,18 +1,25 @@
-const phone = require('./modules/celular')
+jest.mock('./poc_teste/carregador.js')
 
-jest.mock('./modules/carregador.js')
+const Phone = require('./poc_teste/celular')
 
-const carregador = require('./modules/carregador')
+const Carregador = require('./poc_teste/carregador')
+
+beforeEach(() => {
+  Carregador.mockClear();
+})
+beforeAll(() => {
+
+})
 
 describe('Poc mock jest', () => {
-  it('Should return charge 70', async () => {
-    carregador.sendEnergy.mockImplementation(() => {
-      return 100
-    })
+  it('Should return charge 100', async () => {
+    Carregador.sendEnergy = jest.fn()
+
+    const phone = new Phone()
 
     const response = await phone.charge(25)
 
-    expect(response).toBe(100)
+    expect(Carregador).toHaveBeenCalledTimes(1);
   })
 
   // it('Should return charge 0', async () => {
